@@ -201,7 +201,6 @@ document.addEventListener('DOMContentLoaded', () => {
             doc.rect(10, 10, pageWidth - 20, pageHeight - 20); 
 
             // --- Header con color de acento y Textura ---
-            // --- ¡CAMBIO AQUÍ! ---
             doc.setFillColor(accentColorDark); // Usando el color más oscuro
             doc.rect(10, 10, pageWidth - 20, 30, 'F'); 
 
@@ -232,7 +231,8 @@ document.addEventListener('DOMContentLoaded', () => {
             doc.setFontSize(48);
             doc.setFont('Times-Roman', 'bold'); 
             doc.setTextColor(accentColor); 
-            doc.text(userData.name, pageWidth / 2, 125, { align: 'center' });
+            const maxNameWidth = pageWidth - 40;
+            doc.text(userData.name, pageWidth / 2, 125, { align: 'center', maxWidth: maxNameWidth });
 
             // --- Mensaje de éxito ---
             doc.setFontSize(16);
