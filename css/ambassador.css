@@ -1,0 +1,441 @@
+/* =================================================================== */
+/* ARCHIVO DE ESTILOS "PREMIUM" (Light Mode - Púrpura)                 */
+/* =================================================================== */
+
+/* 1. ESTILOS BASE Y VARIABLES */
+:root {
+    /* Color de acento púrpura del logo */
+    --accent-color: #514690; 
+    --accent-color-dark: #413876;
+    --accent-color-light: rgba(81, 70, 144, 0.1); /* Púrpura muy transparente */
+    
+    --text-primary: #1d1d1f; /* Casi negro (Apple) */
+    --text-secondary: #515154; /* Gris (Apple) */
+    --border-color: #d2d2d7; /* Borde sutil (Apple) */
+    --bg-light: #f5f5f7; /* Fondo gris claro (Apple) */
+    --bg-white: #ffffff;
+
+    --radius-main: 16px;
+    --radius-inner: 10px;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    background-color: var(--bg-light); 
+    margin: 0;
+    padding: 0;
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* 2. HEADER Y FOOTER */
+.site-header { 
+    background-color: var(--bg-white);
+    padding: 15px 30px;
+    border-bottom: 1px solid var(--border-color);
+}
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.site-header .logo-img {
+    height: 2.5rem; 
+}
+.header-nav {
+    display: flex;
+    gap: 10px; /* Reducir el gap para compensar el padding */
+}
+
+/* --- ¡CAMBIOS AQUÍ! --- */
+.header-nav a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s ease; /* Transición para todo */
+    padding: 8px 16px; /* Padding para crear el efecto "píldora" */
+    border-radius: var(--radius-inner); /* Bordes redondeados */
+}
+.header-nav a:hover {
+    color: var(--accent-color); /* Púrpura al pasar el mouse */
+    background-color: var(--accent-color-light); /* Fondo púrpura claro */
+}
+/* --- FIN DE LOS CAMBIOS --- */
+
+.site-footer {
+    background-color: var(--bg-white); /* Fondo blanco */
+    padding: 40px 30px;
+    border-top: 1px solid var(--border-color);
+    margin-top: 50px;
+}
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+.site-footer .logo-img {
+    height: 3rem;
+    margin-bottom: 20px;
+}
+.footer-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Para que se ajuste en móviles */
+    gap: 25px;
+    margin-bottom: 20px;
+}
+.footer-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+.footer-links a:hover {
+    color: var(--accent-color); /* Púrpura al pasar el mouse */
+}
+.footer-copyright p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+
+/* 3. LAYOUT DEL FORMULARIO */
+.receipt-main {
+    padding: 50px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+.form-container {
+    width: 100%;
+    max-width: 800px; 
+    background-color: var(--bg-white);
+    padding: 40px;
+    border-radius: var(--radius-main);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05); /* Sombra suave */
+    border: 1px solid rgba(0,0,0,0.03);
+}
+
+/* 4. TIPOGRAFÍA Y SECCIONES */
+h1 {
+    font-size: 2.2rem; 
+    font-weight: 700;
+    text-align: center;
+    margin: 0 0 30px 0;
+    color: var(--text-primary);
+}
+p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+hr.form-divider {
+    border: none;
+    border-top: 1px solid var(--border-color);
+    margin: 30px 0;
+}
+.error-message {
+    font-size: 0.9rem;
+    color: #d93030; /* Rojo */
+    background-color: #fff1f2;
+    border: 1px solid #ffb8b8;
+    padding: 15px;
+    border-radius: var(--radius-inner);
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* 5. ESTILOS DE FORMULARIO (Inputs) */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+.form-group label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+}
+.form-group input {
+    width: 100%;
+    padding: 16px;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-light); /* Fondo gris claro */
+    border-radius: var(--radius-inner);
+    font-family: inherit;
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    color: var(--text-primary);
+}
+.form-group input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    background-color: var(--bg-white);
+    box-shadow: 0 0 0 3px var(--accent-color-light);
+}
+.text-small {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-top: -10px;
+    line-height: 1.6;
+}
+
+/* 6. BOTONES */
+.button-primary, .button-secondary {
+    display: inline-block;
+    padding: 16px 25px;
+    border-radius: var(--radius-inner);
+    font-weight: 600;
+    transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    font-size: 1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+.button-primary {
+    background-color: var(--accent-color);
+    color: white;
+    text-decoration: none;
+}
+.button-primary:hover {
+    background-color: var(--accent-color-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(81, 70, 144, 0.3); /* Sombra púrpura */
+}
+.button-secondary {
+    background-color: var(--bg-white);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+}
+.button-secondary:hover {
+    color: var(--text-primary);
+    border-color: var(--text-secondary);
+    transform: translateY(-2px);
+}
+.generate-btn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.form-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+.form-navigation .button-primary {
+    flex-grow: 1;
+}
+.form-navigation .button-secondary {
+    flex-grow: 0;
+}
+#step-1 .form-navigation {
+    justify-content: flex-end;
+}
+
+/* Loader */
+.loader.hidden { display: none; }
+.loader {
+    width: 18px;
+    height: 18px;
+    border: 3px solid #FFF;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+@keyframes rotation {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 7. ESTILOS DEL QUIZ (Light Mode + Púrpura) */
+#step-3.form-step {
+    display: flex;
+    flex-direction: column;
+}
+.quiz-question {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    margin-bottom: 25px; 
+}
+.quiz-question + .quiz-question {
+    margin-top: 15px;
+}
+#step-3 .form-divider { order: 98; }
+#step-3 #quiz-error { order: 99; }
+#step-3 .form-navigation { order: 100; }
+
+.quiz-question > label {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 15px;
+}
+.quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.quiz-option {
+    display: flex;
+    align-items: center;
+    background-color: var(--bg-white);
+    border: 2px solid var(--border-color);
+    padding: 15px;
+    border-radius: var(--radius-inner);
+    cursor: pointer;
+    transition: border-color 0.2s, background-color 0.2s;
+}
+.quiz-option:hover {
+    border-color: var(--accent-color);
+}
+/* CAMBIO: Ahora usa el acento púrpura */
+.quiz-option:has(input[type="radio"]:checked) {
+    border-color: var(--accent-color);
+    background-color: var(--accent-color-light);
+}
+.quiz-option input[type="radio"] {
+    display: none;
+}
+.quiz-option label {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 0;
+    flex: 1; 
+    cursor: pointer;
+}
+
+/* 8. PANTALLA DE ÉXITO (Light Mode) */
+.tips-section {
+    margin-top: 30px;
+}
+.template-box {
+    background-color: var(--bg-light);
+    border: 1px solid var(--border-color);
+    padding: 20px;
+    border-radius: var(--radius-inner);
+    margin-bottom: 15px;
+}
+.template-box strong {
+    color: var(--text-primary);
+}
+.template-box .template-text {
+    font-family: monospace;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+/* 9. MODAL DE ÉXITO (Light Mode) */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    padding: 20px;
+    box-sizing: border-box;
+    animation: fadeIn 0.3s;
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+.modal-content {
+    background-color: var(--bg-white);
+    padding: 40px;
+    border-radius: var(--radius-main);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 450px;
+    width: 100%;
+    position: relative;
+    animation: scaleIn 0.3s;
+}
+@keyframes scaleIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+.modal-icon {
+    width: auto; /* Ajustar al logo */
+    height: 60px; /* Mantener altura */
+    margin-bottom: 20px;
+}
+.modal-content h2 {
+    color: var(--text-primary);
+    margin: 0 0 15px 0;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+.modal-content p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+.modal-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 2.5rem;
+    color: #aaa;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.2s;
+}
+.modal-close-btn:hover {
+    color: #333;
+}
+
+/* 10. RESPONSIVIDAD */
+@media (max-width: 768px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+    .header-nav {
+        display: none;
+    }
+}
+@media (max-width: 600px) {
+    .form-container {
+        padding: 20px;
+        margin-top: 10px; /* Espacio desde el header */
+    }
+    h1 {
+        font-size: 1.8rem;
+    }
+    .footer-links {
+        flex-direction: column;
+        gap: 15px;
+    }
+}

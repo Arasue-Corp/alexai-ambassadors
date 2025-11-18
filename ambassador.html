@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ambassador Registration - Alex AI Insurtech</title>
+    <link rel="icon" type="image/png" href="./assets/img/favicon.ico">
+    
+    <link rel="stylesheet" href="./css/ambassador.css"> 
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        // --- ¡PEGA TUS MISMAS CLAVES DE SUPABASE AQUÍ! ---
+        // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        const SUPABASE_URL = 'https://pddukinvrrmibnxfunuw.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBkZHVraW52cnJtaWJueGZ1bnV3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjM0MDYwMTYsImV4cCI6MjA3ODk4MjAxNn0.1-NioXXntQALwJL5nAoGyX6hysG3QsZu7Qg-hsJAzdY';
+        // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    </script>
+    </head>
+<body>
+
+    <header class="site-header">
+        <div class="header-content">
+            <a href="https://alexai.cloud/" class="logo-link" target="_blank">
+                <img src="./assets/img/Logo-alexai-main.png" alt="Alex AI Insurtech Logo" class="logo-img">
+            </a>
+            <nav class="header-nav">
+                <a href="https://alexai.cloud/" target="_blank">Home</a>
+                <a href="https://rater.alexai.cloud/quote-tool" target="_blank">Quote Auto Insurance</a>
+                <a href="https://alexai.cloud/contact-us" target="_blank">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="receipt-main">
+        <div class="form-container" style="max-width: 800px;">
+            
+            <form id="registration-form" novalidate>
+                
+                <div id="step-1" class="form-step active">
+                    <h1>Tell us where to send the money.</h1>
+                    
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="user-name">First Name*</label>
+                            <input type="text" id="user-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="user-lastname">Last Name*</label>
+                            <input type="text" id="user-lastname" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="user-email">Email*</label>
+                            <input type="email" id="user-email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="user-phone">Phone*</label>
+                            <input type="tel" id="user-phone" required>
+                        </div>
+                    </div>
+                    
+                    <hr class="form-divider">
+                    
+                    <p>We use Paypal to pay you quickly and securely. Click the link below to set up your payment method.</p>
+                    <p class="text-small">During this setup, our payment partner will securely ask for your tax information (W-9 Form). This is required by law so we can pay you and is a one-time step. Without this, we cannot send your rewards.</p>
+                    
+                    <a href="https://www.paypal.com/paypalme/" target="_blank" class="button-primary" style="text-align: center; margin-bottom: 15px;">
+                        Set Up My Payment Wallet
+                    </a>
+                    
+                    <div class="form-navigation">
+                         <button type="button" id="btn-step1-next" class="button-primary">Next Step</button>
+                    </div>
+                    <p id="step1-error" class="error-message hidden"></p>
+                </div>
+
+                <div id="step-2" class="form-step hidden">
+                    <h1>The quick certification (2 minutes).</h1>
+                    <p>As an ambassador, you represent our brand. It's vital that you understand the rules of transparency. This 5-question quiz ensures we all play fair.</p>
+                    <p>(You need 100% to pass, but you can take it as many times as you need).</p>
+                    
+                    <div class="form-navigation">
+                        <button type="button" id="btn-step2-back" class="button-secondary">Back</button>
+                        <button type="button" id="btn-step2-next" class="button-primary generate-btn">Start Certification</button>
+                    </div>
+                </div>
+
+                <div id="step-3" class="form-step hidden">
+                    <h1>Certification Quiz</h1>
+                    
+                    <div class="form-group quiz-question">
+                        <label>1. When do you earn your $25 reward?</label>
+                        <div class="quiz-options">
+                            <div class="quiz-option"><input type="radio" id="q1-a" name="q1" value="A" required><label for="q1-a">A) When someone clicks my link.</label></div>
+                            <div class="quiz-option"><input type="radio" id="q1-b" name="q1" value="B"><label for="q1-b">B) When someone requests a quote.</label></div>
+                            <div class="quiz-option"><input type="radio" id="q1-c" name="q1" value="C"><label for="q1-c">C) When my referral pays their first month's policy.</label></div>
+                        </div>
+                    </div>
+                    <div class="form-group quiz-question">
+                        <label>2. A friend asks what the policy covers. What do you do?</label>
+                        <div class="quiz-options">
+                            <div class="quiz-option"><input type="radio" id="q2-a" name="q2" value="A" required><label for="q2-a">A) I explain the coverages as best as I can.</label></div>
+                            <div class="quiz-option"><input type="radio" id="q2-b" name="q2" value="B"><label for="q2-b">B) I tell them I'm not an agent, but the Alex AI team will explain everything when they use my link.</label></div>
+                        </div>
+                    </div>
+                    <div class="form-group quiz-question">
+                        <label>3. Can you refer yourself or your spouse to earn the reward?</label>
+                        <div class="quiz-options">
+                            <div class="quiz-option"><input type="radio" id="q3-a" name="q3" value="A" required><label for="q3-a">A) Yes, all sales count.</label></div>
+                            <div class="quiz-option"><input type="radio" id="q3-b" name="q3" value="B"><label for="q3-b">B) No, the program is only for attracting new customers.</label></div>
+                        </div>
+                    </div>
+                    <div class="form-group quiz-question">
+                        <label>4. What is the correct way to promote your link?</label>
+                        <div class="quiz-options">
+                            <div class="quiz-option"><input type="radio" id="q4-a" name="q4" value="A" required><label for="q4-a">A) Sending 500 mass (spam) emails to strangers.</label></div>
+                            <div class="quiz-option"><input type="radio" id="q4-b" name="q4" value="B"><label for="q4-b">B) Sharing it authentically with friends, family, or on my social media.</label></div>
+                        </div>
+                    </div>
+                    <div class="form-group quiz-question">
+                        <label>5. Can you promise someone will get "financial freedom" or "replace their income" with this program?</label>
+                        <div class="quiz-options">
+                            <div class="quiz-option"><input type="radio" id="q5-a" name="q5" value="A" required><label for="q5-a">A) Yes, if they refer a lot of people.</label></div>
+                            <div class="quiz-option"><input type="radio" id="q5-b" name="q5" value="B"><label for="q5-b">B) No, that's a misleading income claim and is prohibited.</label></div>
+                        </div>
+                    </div>
+
+                    <hr class="form-divider">
+                    <p id="quiz-error" class="error-message hidden"></p>
+                    
+                    <div class="form-navigation">
+                        <button type="button" id="btn-step3-back" class="button-secondary">Back</button>
+                        <button type="submit" id="quiz-submit-btn" class="button-primary generate-btn">
+                            Submit Answers
+                            <span class="loader hidden"></span>
+                        </button>
+                    </div>
+                </div>
+                
+                <div id="step-4" class="form-step hidden">
+                    <h1>Congratulations, <span id="user-name-final" style="color: var(--accent-color);"></span>! You're one step away from earning.</h1>
+                    <p>Your account is about to be active. Use the following button to activate your account:</p>
+                    
+                    <button type="button" id="btn-activate" class="button-primary generate-btn">Activate My Account</button>
+                    
+                    <hr class="form-divider">
+                    
+                    <div class="tips-section">
+                        <h3>Tips (How to Share):</h3>
+                        <p>Success doesn't come from spam, it comes from authentic sharing. Here are two templates to get you started:</p>
+                        
+                        <div class="template-box">
+                            <strong>WhatsApp message for a friend:</strong>
+                            <p class="template-text">"Hey! I was renewing my auto insurance and found Alex AI. They were super transparent and saved me money. If you're looking, use my link so they treat you right: [Your Link]"</p>
+                        </div>
+                        <div class="template-box">
+                            <strong>Post for Facebook/Instagram:</strong>
+                            <p class="template-text">"Quick recommendation: if you're sick of crazy insurance prices, I 100% recommend Alex AI. I used their service and it was great. Use my referral link and see if you can save: [Your Link]"</p>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </main>
+    
+    <div id="success-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <button id="modal-close-btn" class="modal-close-btn" aria-label="Close">&times;</button>
+            <img src="./assets/img/Logo-alexai-main.png" alt="Success Icon" class="modal-icon">
+            <h2>Registration Complete!</h2>
+            <p>Your certificate has been generated and saved. You will now be moved to the final step.</p>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="./assets/img/Logo-alexai-main.png" alt="Alex AI Insurtech Logo" class="logo-img">
+            </div>
+            <div class="footer-links">
+                <a href="https://alexai.cloud/" target="_blank">Home</a>
+                <a href="https://rater.alexai.cloud/quote-tool" target="_blank">Quote Auto</a>
+                <a href="https://alexai.cloud/contact-us" target="_blank">Contact Us</a>
+                <a href="https://alexai.cloud/privacy-policy/" target="_blank">Privacy Policy</a>
+                <a href="https://alexai.cloud/terms-conditions/" target="_blank">Terms & Conditions</a>
+            </div>
+            <div class="footer-copyright">
+                <p>© 2025 Alex AI Insurtech LLC. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./js/ambassador.js"></script>
+</body>
+</html>
