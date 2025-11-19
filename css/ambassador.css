@@ -1,5 +1,5 @@
 /* =================================================================== */
-/* ARCHIVO DE ESTILOS "PREMIUM" (Light Mode - Púrpura)                 */
+/* ARCHIVO DE ESTILOS "ULTRA PREMIUM" (Light Mode - Púrpura)           */
 /* =================================================================== */
 
 /* 1. ESTILOS BASE Y VARIABLES */
@@ -51,26 +51,53 @@ body {
 }
 .header-nav {
     display: flex;
-    gap: 10px; /* Reducir el gap para compensar el padding */
+    gap: 25px; /* Más espacio entre los enlaces */
+    align-items: center;
 }
 
-/* --- ¡CAMBIOS AQUÍ! --- */
+/* Estilo para los enlaces de navegación (TEXTO SIMPLE) */
 .header-nav a {
     color: var(--text-secondary);
     text-decoration: none;
     font-weight: 500;
-    transition: all 0.2s ease; /* Transición para todo */
-    padding: 8px 16px; /* Padding para crear el efecto "píldora" */
-    border-radius: var(--radius-inner); /* Bordes redondeados */
+    transition: color 0.2s ease; /* Solo transición de color */
+    padding: 0; /* SIN PADDING DE PÍLDORA */
+    border-radius: 0;
 }
 .header-nav a:hover {
-    color: var(--accent-color); /* Púrpura al pasar el mouse */
-    background-color: var(--accent-color-light); /* Fondo púrpura claro */
+    color: var(--accent-color); 
+    background-color: transparent; /* SIN FONDO DE PÍLDORA */
 }
-/* --- FIN DE LOS CAMBIOS --- */
+
+/* Contenedor del Botón de Acción */
+.header-action-group {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+
+/* Estilo para el botón de afiliación (BOTÓN PROMINENTE) */
+.header-action-button {
+    padding: 12px 24px !important; 
+    text-transform: uppercase;
+    font-weight: 700 !important;
+    border-radius: 999px !important; /* Estilo píldora / ultra redondeado */
+    font-size: 0.9rem !important;
+    box-shadow: 0 4px 15px rgba(81, 70, 144, 0.4) !important;
+    /* Sobreescribe cualquier estilo de .header-nav a que pudiera aplicarse */
+    color: white !important;
+    background-color: var(--accent-color) !important;
+}
+.header-action-button:hover {
+    background-color: var(--accent-color-dark) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(81, 70, 144, 0.4);
+}
+/* ---------------------------------------------------- */
+
 
 .site-footer {
-    background-color: var(--bg-white); /* Fondo blanco */
+    background-color: var(--bg-white);
     padding: 40px 30px;
     border-top: 1px solid var(--border-color);
     margin-top: 50px;
@@ -87,7 +114,7 @@ body {
 .footer-links {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap; /* Para que se ajuste en móviles */
+    flex-wrap: wrap; 
     gap: 25px;
     margin-bottom: 20px;
 }
@@ -98,7 +125,7 @@ body {
     transition: color 0.2s ease;
 }
 .footer-links a:hover {
-    color: var(--accent-color); /* Púrpura al pasar el mouse */
+    color: var(--accent-color); 
 }
 .footer-copyright p {
     color: var(--text-secondary);
@@ -120,13 +147,13 @@ body {
     background-color: var(--bg-white);
     padding: 40px;
     border-radius: var(--radius-main);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05); /* Sombra suave */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08); 
     border: 1px solid rgba(0,0,0,0.03);
 }
 
 /* 4. TIPOGRAFÍA Y SECCIONES */
 h1 {
-    font-size: 2.2rem; 
+    font-size: 2.5rem; 
     font-weight: 700;
     text-align: center;
     margin: 0 0 30px 0;
@@ -140,11 +167,11 @@ p {
 hr.form-divider {
     border: none;
     border-top: 1px solid var(--border-color);
-    margin: 30px 0;
+    margin: 40px 0; 
 }
 .error-message {
     font-size: 0.9rem;
-    color: #d93030; /* Rojo */
+    color: #d93030;
     background-color: #fff1f2;
     border: 1px solid #ffb8b8;
     padding: 15px;
@@ -173,19 +200,20 @@ hr.form-divider {
     width: 100%;
     padding: 16px;
     border: 1px solid var(--border-color);
-    background-color: var(--bg-light); /* Fondo gris claro */
+    background-color: var(--bg-light);
     border-radius: var(--radius-inner);
     font-family: inherit;
     font-size: 1rem;
     box-sizing: border-box;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
     color: var(--text-primary);
 }
 .form-group input:focus {
     outline: none;
     border-color: var(--accent-color);
     background-color: var(--bg-white);
-    box-shadow: 0 0 0 3px var(--accent-color-light);
+    box-shadow: 0 0 0 4px var(--accent-color-light); 
+    transform: translateY(-1px); 
 }
 .text-small {
     font-size: 0.9rem;
@@ -215,7 +243,7 @@ hr.form-divider {
 .button-primary:hover {
     background-color: var(--accent-color-dark);
     transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(81, 70, 144, 0.3); /* Sombra púrpura */
+    box-shadow: 0 8px 18px rgba(81, 70, 144, 0.4); 
 }
 .button-secondary {
     background-color: var(--bg-white);
@@ -269,7 +297,7 @@ hr.form-divider {
     100% { transform: rotate(360deg); }
 }
 
-/* 7. ESTILOS DEL QUIZ (Light Mode + Púrpura) */
+/* 7. ESTILOS DEL QUIZ (Aplicable al documento de Afiliación) */
 #step-3.form-step {
     display: flex;
     flex-direction: column;
@@ -311,7 +339,6 @@ hr.form-divider {
 .quiz-option:hover {
     border-color: var(--accent-color);
 }
-/* CAMBIO: Ahora usa el acento púrpura */
 .quiz-option:has(input[type="radio"]:checked) {
     border-color: var(--accent-color);
     background-color: var(--accent-color-light);
@@ -328,7 +355,7 @@ hr.form-divider {
     cursor: pointer;
 }
 
-/* 8. PANTALLA DE ÉXITO (Light Mode) */
+/* 8. PANTALLA DE ÉXITO */
 .tips-section {
     margin-top: 30px;
 }
@@ -350,7 +377,7 @@ hr.form-divider {
     margin-bottom: 0;
 }
 
-/* 9. MODAL DE ÉXITO (Light Mode) */
+/* 9. MODAL DE ÉXITO */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -386,8 +413,8 @@ hr.form-divider {
     to { transform: scale(1); opacity: 1; }
 }
 .modal-icon {
-    width: auto; /* Ajustar al logo */
-    height: 60px; /* Mantener altura */
+    width: auto; 
+    height: 60px; 
     margin-bottom: 20px;
 }
 .modal-content h2 {
@@ -423,13 +450,34 @@ hr.form-divider {
         grid-template-columns: 1fr;
     }
     .header-nav {
-        display: none;
+        flex-direction: column; 
+        gap: 8px;
+    }
+    .header-nav .button-affiliate {
+        width: 100%; 
+    }
+    .header-nav a:not(.button-affiliate) {
+        width: 100%;
+        text-align: center;
+    }
+    .header-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .header-action-group {
+        width: 100%;
+        margin-top: 15px;
+        margin-left: 0;
+        justify-content: center;
+    }
+    .header-nav {
+        order: 3; /* Mover la nav al final para que el logo y el botón prominente vayan primero */
     }
 }
 @media (max-width: 600px) {
     .form-container {
         padding: 20px;
-        margin-top: 10px; /* Espacio desde el header */
+        margin-top: 10px;
     }
     h1 {
         font-size: 1.8rem;
